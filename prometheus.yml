@@ -1,0 +1,40 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+alerting:
+ alertmanagers:
+ - static_configs:
+   - targets: ["localhost:9093"]
+
+rule_files:
+ - './alert_rules/*.yml'
+
+scrape_configs:
+  - job_name: 'node_exporter'
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    metrics_path: /metrics
+    file_sd_configs:
+     - files:
+        - './nodes/*.yml'
+
+  - job_name: 'pushgateway'
+    static_configs:
+      - targets: ['172.16.2.30:9091']
+
+  - job_name: 'snmp_exporter'
+    metrics_path: /snmp
+    params:
+      module: [test-xxx]
+    file_sd_configs:
+      - files:
+        - './switches/*.yml'
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9116  # SNMP exporter.
+
