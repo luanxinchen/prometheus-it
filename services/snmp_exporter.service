@@ -1,0 +1,14 @@
+[Unit]
+Description=SNMP_Exporter
+After=network.service
+
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/root/prometheus/snmp_exporter/snmp_exporter \
+--config.file=/root/prometheus/snmp_exporter/snmp-transwarp.yml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
