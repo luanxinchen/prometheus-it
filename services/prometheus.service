@@ -1,0 +1,18 @@
+[Unit]
+Description=Promethues
+After=network.service
+
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/root/prometheus/prometheus \
+--config.file=/root/prometheus/prometheus.yml \
+--query.max-samples=120000000 \
+--storage.tsdb.path=/root/prometheus/data/ \
+--storage.tsdb.retention.time=7d
+ExecReload=/bin/kill -SIGHUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
