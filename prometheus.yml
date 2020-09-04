@@ -17,7 +17,7 @@ scrape_configs:
     metrics_path: /metrics
     file_sd_configs:
      - files:
-        - './nodes/*.yml'
+        - './nodes/vmhosts.yml'
 
   - job_name: 'pushgateway'
     static_configs:
@@ -26,7 +26,7 @@ scrape_configs:
   - job_name: 'snmp_exporter'
     metrics_path: /snmp
     params:
-      module: [test-xxx]
+      module: [simple_switch]
     file_sd_configs:
       - files:
         - './switches/*.yml'
@@ -37,4 +37,20 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: 127.0.0.1:9116  # SNMP exporter.
+
+
+  - job_name: 'blackbox_ping'
+    metrics_path: /probe
+    params:
+      module: [icmp]
+    file_sd_configs:
+      - files:
+        - './blackbox_targets/*.yml'
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9115
 

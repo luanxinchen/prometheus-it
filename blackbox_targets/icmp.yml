@@ -1,0 +1,18 @@
+- labels:
+    description: 'WAN'
+  targets:
+    - 180.167.145.38
+    - 101.95.183.46
+    - 103.28.213.234
+- labels:
+    description: 'LAN'
+  targets:
+    - 172.16.100.254
+    - 172.26.100.254
+- labels:
+    description: 'IPSEC'
+  targets:
+    - 172.20.100.254
+    - 172.22.100.254
+    - 172.29.100.254
+    - 172.18.100.254
