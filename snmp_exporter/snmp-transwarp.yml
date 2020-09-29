@@ -10519,3 +10519,212 @@ simple_switch:
     indexes:
     - labelname: ifIndex
       type: gauge
+# WARNING: This file was auto-generated using snmp_exporter generator, manual changes will be lost.
+dell:
+  walk:
+  - 1.3.6.1.4.1.674.10892.5.4.700.20.1
+  metrics:
+  - name: temperatureProbechassisIndex
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.1
+    type: gauge
+    help: 0700.0020.0001.0001 This attribute defines the index (one based) of the
+      associated system chassis. - 1.3.6.1.4.1.674.10892.5.4.700.20.1.1
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+  - name: temperatureProbeIndex
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.2
+    type: gauge
+    help: 0700.0020.0001.0002 This attribute defines the index (one based) of the
+      temperature probe. - 1.3.6.1.4.1.674.10892.5.4.700.20.1.2
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+  - name: temperatureProbeStateCapabilities
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.3
+    type: gauge
+    help: 0700.0020.0001.0003 This attribute defines the state capabilities of the
+      temperature probe. - 1.3.6.1.4.1.674.10892.5.4.700.20.1.3
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+    enum_values:
+      1: unknownCapabilities
+      2: enableCapable
+      4: notReadyCapable
+      6: enableAndNotReadyCapable
+  - name: temperatureProbeStateSettings
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.4
+    type: gauge
+    help: 0700.0020.0001.0004 This attribute defines the state settings of the temperature
+      probe. - 1.3.6.1.4.1.674.10892.5.4.700.20.1.4
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+    enum_values:
+      1: unknown
+      2: enabled
+      4: notReady
+      6: enabledAndNotReady
+  - name: temperatureProbeStatus
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.5
+    type: gauge
+    help: 0700.0020.0001.0005 This attribute defines the probe status of the temperature
+      probe. - 1.3.6.1.4.1.674.10892.5.4.700.20.1.5
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+    enum_values:
+      1: other
+      2: unknown
+      3: ok
+      4: nonCriticalUpper
+      5: criticalUpper
+      6: nonRecoverableUpper
+      7: nonCriticalLower
+      8: criticalLower
+      9: nonRecoverableLower
+      10: failed
+  - name: temperatureProbeReading
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.6
+    type: gauge
+    help: 0700.0020.0001.0006 This attribute defines the reading for a temperature
+      probe of type other than temperatureProbeTypeIsDiscrete - 1.3.6.1.4.1.674.10892.5.4.700.20.1.6
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+  - name: temperatureProbeType
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.7
+    type: gauge
+    help: 0700.0020.0001.0007 This attribute defines the type of the temperature probe.
+      - 1.3.6.1.4.1.674.10892.5.4.700.20.1.7
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+    enum_values:
+      1: temperatureProbeTypeIsOther
+      2: temperatureProbeTypeIsUnknown
+      3: temperatureProbeTypeIsAmbientESM
+      16: temperatureProbeTypeIsDiscrete
+  - name: temperatureProbeLocationName
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.8
+    type: OctetString
+    help: 0700.0020.0001.0008 This attribute defines the location name of the temperature
+      probe. - 1.3.6.1.4.1.674.10892.5.4.700.20.1.8
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+  - name: temperatureProbeUpperNonRecoverableThreshold
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.9
+    type: gauge
+    help: 0700.0020.0001.0009 This attribute defines the upper nonrecoverable threshold
+      of the temperature probe - 1.3.6.1.4.1.674.10892.5.4.700.20.1.9
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+  - name: temperatureProbeUpperCriticalThreshold
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.10
+    type: gauge
+    help: 0700.0020.0001.0010 This attribute defines the upper critical threshold
+      of the temperature probe - 1.3.6.1.4.1.674.10892.5.4.700.20.1.10
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+  - name: temperatureProbeUpperNonCriticalThreshold
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.11
+    type: gauge
+    help: 0700.0020.0001.0011 This attribute defines the upper noncritical threshold
+      of the temperature probe - 1.3.6.1.4.1.674.10892.5.4.700.20.1.11
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+  - name: temperatureProbeLowerNonCriticalThreshold
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.12
+    type: gauge
+    help: 0700.0020.0001.0012 This attribute defines the lower noncritical threshold
+      of the temperature probe - 1.3.6.1.4.1.674.10892.5.4.700.20.1.12
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+  - name: temperatureProbeLowerCriticalThreshold
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.13
+    type: gauge
+    help: 0700.0020.0001.0013 This attribute defines the lower critical threshold
+      of the temperature probe - 1.3.6.1.4.1.674.10892.5.4.700.20.1.13
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+  - name: temperatureProbeLowerNonRecoverableThreshold
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.14
+    type: gauge
+    help: 0700.0020.0001.0014 This attribute defines the lower nonrecoverable threshold
+      of the temperature probe - 1.3.6.1.4.1.674.10892.5.4.700.20.1.14
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+  - name: temperatureProbeProbeCapabilities
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.15
+    type: gauge
+    help: 0700.0020.0001.0015 This attribute defines the probe capabilities of the
+      temperature probe. - 1.3.6.1.4.1.674.10892.5.4.700.20.1.15
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+    enum_values:
+      1: upperNonCriticalThresholdSetCapable
+      2: lowerNonCriticalThresholdSetCapable
+      4: upperNonCriticalThresholdDefaultCapable
+      8: lowerNonCriticalThresholdDefaultCapable
+  - name: temperatureProbeDiscreteReading
+    oid: 1.3.6.1.4.1.674.10892.5.4.700.20.1.16
+    type: gauge
+    help: 0700.0020.0001.0016 This attribute defines the reading for a temperature
+      probe of type temperatureProbeTypeIsDiscrete - 1.3.6.1.4.1.674.10892.5.4.700.20.1.16
+    indexes:
+    - labelname: temperatureProbechassisIndex
+      type: gauge
+    - labelname: temperatureProbeIndex
+      type: gauge
+    enum_values:
+      1: temperatureIsGood
+      2: temperatureIsBad
+  version: 3
+  timeout: 30s
+  auth:
+    community: public
+    security_level: authPriv
+    username: root
+    password: Warp1234
+    auth_protocol: SHA
+    priv_protocol: AES
+    priv_password: Warp1234

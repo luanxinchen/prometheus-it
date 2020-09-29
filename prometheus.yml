@@ -19,9 +19,9 @@ scrape_configs:
      - files:
         - './nodes/vmhosts.yml'
 
-  - job_name: 'pushgateway'
-    static_configs:
-      - targets: ['172.16.2.30:9091']
+#  - job_name: 'pushgateway'
+#    static_configs:
+#      - targets: ['172.16.2.30:9091']
 
   - job_name: 'snmp_exporter'
     metrics_path: /snmp
@@ -30,6 +30,21 @@ scrape_configs:
     file_sd_configs:
       - files:
         - './switches/*.yml'
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9116 
+
+  - job_name: 'snmp_exporter_dell_idrac'
+    metrics_path: /snmp
+    params:
+      module: [dell]
+    file_sd_configs:
+      - files:
+        - './dell/*.yml'
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
@@ -45,7 +60,22 @@ scrape_configs:
       module: [icmp]
     file_sd_configs:
       - files:
-        - './blackbox_targets/*.yml'
+        - './blackbox_targets/icmp.yml'
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9115
+
+  - job_name: 'blackbox_http'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    file_sd_configs:
+      - files:
+        - './blackbox_targets/website.yml'
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
