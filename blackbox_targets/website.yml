@@ -1,0 +1,13 @@
+- labels:
+    description: 'HTTP'
+  targets:
+    - https://www.transwarp.io
+    - https://www.transwarp.cn
+    - https://oa.transwarp.io
+    - https://review.transwarp.cn
+    - http://asset.transwarp.io
+    - http://jira.transwarp.io:8080
+    - http://wiki.transwarp.io:8090
+    - http://gitlab.transwarp.io:10080
+    - http://nas.transwarp.io:8080
+    - http://university.transwarp.cn

@@ -16,3 +16,12 @@
     - 172.22.100.254
     - 172.29.100.254
     - 172.18.100.254
+- labels:
+    description: 'DNS'
+  targets:
+    - 172.16.2.105
+    - 172.16.2.106
+- labels:
+    description: 'VPN'
+  targets:
+    - 172.16.2.32
