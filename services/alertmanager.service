@@ -1,0 +1,15 @@
+[Unit]
+Description=AlertManager
+After=network.service
+
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/root/prometheus/alertmanager/alertmanager \
+--config.file=/root/prometheus/alertmanager/alertmanager.yml
+ExecReload=/bin/kill -SIGHUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
