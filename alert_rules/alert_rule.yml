@@ -1,0 +1,11 @@
+groups:
+- name: dell_idrac
+  rules:
+  - alert: "DELL服务器进气高温预警"
+    expr: temperatureProbeReading{temperatureProbeIndex="3"} / 10 > 25
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      summary: "服务器进气温度异常"
+      description: "{{ $labels.instance }}节点当前进气温度{{ $value }}摄氏度，已超阈值，请立即检查！"
