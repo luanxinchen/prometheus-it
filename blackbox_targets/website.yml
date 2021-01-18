@@ -2,6 +2,7 @@
     description: 'HTTP'
   targets:
     - https://www.transwarp.io
+    - https://erp.transwarp.io
     - https://www.transwarp.cn
     - https://oa.transwarp.io
     - https://review.transwarp.cn
@@ -10,4 +11,4 @@
     - http://wiki.transwarp.io:8090
     - http://gitlab.transwarp.io:10080
     - http://nas.transwarp.io:8080
-    - http://university.transwarp.cn
+    #- http://university.transwarp.cn

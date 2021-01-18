@@ -1,0 +1,14 @@
+[Unit]
+Description=PrometheusAlert
+After=network.service
+
+[Service]
+User=root
+Group=root
+Type=simple
+WorkingDirectory=/root/prometheus/PrometheusAlert/
+ExecStart=/root/prometheus/PrometheusAlert/PrometheusAlert 
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

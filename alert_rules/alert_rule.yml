@@ -2,10 +2,41 @@ groups:
 - name: dell_idrac
   rules:
   - alert: "DELL服务器进气高温预警"
-    expr: temperatureProbeReading{temperatureProbeIndex="3"} / 10 > 25
+    expr: temperatureProbeReading{temperatureProbeIndex="3"} / 10 > 26
     for: 2m
     labels:
       severity: critical
     annotations:
-      summary: "服务器进气温度异常"
+      summary: "B11机房高温预警"
       description: "{{ $labels.instance }}节点当前进气温度{{ $value }}摄氏度，已超阈值，请立即检查！"
+- name: huawei_ibmc
+  rules:
+  - alert: "Huawei服务器进气高温预警"
+    expr: temperatureReading{temperatureIndex="1"} / 10 > 28
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      summary: "A9机房高温预警"
+      description: "{{ $labels.instance }}节点当前进气温度{{ $value }}摄氏度，已超阈值，请立即检查！"
+- name: http_statu_code
+  rules:
+  - alert: "HTTP服务响应异常"
+    expr: probe_http_status_code{instance!="http://gitlab.transwarp.io:10080"} != 200 
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "HTTP服务响应状态码异常"
+      description: "WEB网站：{{ $labels.instance }} \ 当前状态码: {{ $value }} "
+#- name: dell_idrac_wxdx 
+#  rules:
+#  - alert: "DELL服务器进气高温短信预警"
+#    expr: temperatureProbeReading{temperatureProbeIndex="3"} / 10 > 30
+#    labels:
+#      name: prometheusalertcenter
+#      level: 3   #告警级别,告警级别定义 0 信息,1 警告,2 一般严重,3 严重,4 灾难
+#    annotations:
+#      description: "{{ $labels.instance }}节点当前进气温度{{ $value }}摄氏度，已超阈值，请立即检查！" 
+#      mobile: 13166113163,18762259652,17721476450
+#      #wxurl: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=d2b39f22-2e00-42da-b7ae-f61770b34d4b" #支持添加多个企业微信机器人告警,用,号分割即可,如果留空或者未填写,则默认发送到配置文件中填写的企业微信机器人地址

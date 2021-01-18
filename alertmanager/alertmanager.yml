@@ -2,7 +2,7 @@ global:
   smtp_smarthost: 'smtp.exmail.qq.com:587' 
   smtp_from: 'it-service@transwarp.io'
   smtp_auth_username: 'it-service@transwarp.io'
-  smtp_auth_password: 'Password@12345'
+  smtp_auth_password: 'VnPnwe9^&7@3'
   smtp_require_tls: true
   wechat_api_url: 'https://qyapi.weixin.qq.com/cgi-bin/'
   wechat_api_secret: '8j0EeYfkJjEGQHuHTHVUHgeXiPeAPMSSXlH4hlMI66o'
@@ -15,7 +15,7 @@ route:
   group_wait: 10s #首次警报触发10秒后发送邮件
   group_interval: 30s #发送新的警报前等待30秒
   repeat_interval: 1h #重复发送警报邮件的周期，注意，间隔太短会引起邮件轰炸
-  receiver: 'email'
+  receiver: 'web.hook.prometheusalert'
   routes:
   - match:
       severity: critical
@@ -36,4 +36,6 @@ receivers:
     message: '{{ template "wechat.default.message" . }}'
     agent_id: '1000008'
     api_secret: '8j0EeYfkJjEGQHuHTHVUHgeXiPeAPMSSXlH4hlMI66o'
-
+- name: 'web.hook.prometheusalert'
+  webhook_configs:
+  - url: 'http://localhost:8080/prometheus/alert'

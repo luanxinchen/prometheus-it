@@ -10728,3 +10728,25 @@ dell:
     auth_protocol: SHA
     priv_protocol: AES
     priv_password: Warp1234
+huawei:
+  walk:
+  - 1.3.6.1.4.1.2011.2.235.1.1.26.50.1.3
+  metrics:
+  - name: temperatureReading
+    oid: 1.3.6.1.4.1.2011.2.235.1.1.26.50.1.3
+    type: gauge
+    help: Information about temperature reading,the unit is 1/10 Celsius degree -
+      1.3.6.1.4.1.2011.2.235.1.1.26.50.1.3
+    indexes:
+    - labelname: temperatureIndex
+      type: gauge
+  version: 3
+  timeout: 30s
+  auth:
+    community: public
+    security_level: authPriv
+    username: Administrator
+    password: Admin@9999
+    auth_protocol: SHA
+    priv_protocol: AES
+    priv_password: Admin@9999
